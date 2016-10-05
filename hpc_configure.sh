@@ -133,7 +133,7 @@ case $doit in
 		# Add TAU to PATH (to bash setup so the change is added every time you open a bash prompt)
 		echo "export PATH=\$HOME/tau/x86_64/bin:\$PATH" >> ~/.bashrc
 		# Add TAU_MAKEFILE setup
-		echo "export TAU_MAKEFILE=\$HOME/tau/x86_64/lib/Makefile.tau-pdt"
+		echo "export TAU_MAKEFILE=\$HOME/tau/x86_64/lib/Makefile.tau-pdt" >> ~/.bashrc
 
 		echo PATH updated to\:
 		echo $PATH
