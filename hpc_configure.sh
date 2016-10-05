@@ -116,13 +116,11 @@ case $doit in
 	rm -rf ~/tau/tau-2.25.2
 	./configure -cc=gcc -c++=g++ -pdt="$HOME/pdt"
 	make install
-	export TAU_MAKEFILE=$HOME/tau/x86_64/lib/Makefile.tau-pdt 
+	
+	# ======== Optionally Configure Environemnt ========
+	echo "======== Environemnt Setup ========"
 
-
-	# ======== Optionally Configure Path ========
-	echo "======== PATH Setup ========"
-
-	read -n1 -p "Update PATH (i.e. add update commands to ~/.bashrc)? (Only do this once!) [y,n]" doit 
+	read -n1 -p "Update Environemnt (i.e. add update commands to ~/.bashrc)? (Only do this once!) [y,n]" doit 
 	case $doit in  
 	  y|Y) 
 		# ======== Only run once! ========
@@ -134,6 +132,8 @@ case $doit in
 		echo "export PATH=\$HOME/pdt/x86_64/bin:\$PATH" >> ~/.bashrc
 		# Add TAU to PATH (to bash setup so the change is added every time you open a bash prompt)
 		echo "export PATH=\$HOME/tau/x86_64/bin:\$PATH" >> ~/.bashrc
+		# Add TAU_MAKEFILE setup
+		echo "export TAU_MAKEFILE=\$HOME/tau/x86_64/lib/Makefile.tau-pdt"
 
 		echo PATH updated to\:
 		echo $PATH
@@ -149,6 +149,8 @@ case $doit in
 	# Always add PDT and TAU to current path because "stupid user syndrome" - the changes to PATH below disappear as soon as this script exits
 	export PATH=$HOME/pdt/x86_64/bin:$PATH
 	export PATH=$HOME/tau/x86_64/bin:$PATH
+	# Same reason as before
+	export TAU_MAKEFILE=$HOME/tau/x86_64/lib/Makefile.tau-pdt 
 
 	# ======== HPC basic coursework setup ========
 	echo "======== Basic HPC Coursework Setup ========"
